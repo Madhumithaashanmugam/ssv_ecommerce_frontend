@@ -1,0 +1,256 @@
+/* Container for the whole analytics page */
+.analytics-container {
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  color: #3c3c3c;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Title styling */
+.analytics-title {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+/* Statistics card container */
+.dynamic-stats-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+.dynamic-stat-card {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  flex: 1 1 180px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(60, 60, 60, 0.05);
+  transition: box-shadow 0.3s ease;
+  text-align: center;
+}
+
+.dynamic-stat-card:hover {
+  box-shadow: 0 8px 16px rgba(60, 60, 60, 0.1);
+}
+
+.dynamic-stat-title {
+  font-size: 14px;
+  color: #7a7a7a;
+  margin-bottom: 5px;
+}
+
+.dynamic-stat-value {
+  font-size: 22px;
+  font-weight: bold;
+  color: #3c3c3c;
+}
+
+/* Section container */
+.section {
+  margin-bottom: 40px;
+}
+
+.section-title {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  border-left: 4px solid #3c3c3c;
+  padding-left: 10px;
+}
+
+/* Table container */
+.table-container {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(60, 60, 60, 0.05);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 12px 15px;
+  border-bottom: 1px solid #f0f0f0;
+  white-space: nowrap;
+}
+
+th {
+  background-color: #f9f9f9;
+  font-weight: 600;
+  color: #3c3c3c;
+}
+
+tr:hover {
+  background-color: #f4f4f4;
+}
+
+/* Table button */
+.table-button {
+  padding: 6px 12px;
+  font-size: 14px;
+  background-color: #3c3c3c;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.25s ease;
+}
+
+.table-button:hover {
+  background-color: #4d4d4d;
+}
+
+/* Error & Empty States */
+.error-message,
+.empty-message {
+  color: #a94442;
+  font-size: 14px;
+  background-color: #fdf2f2;
+  border: 1px solid #f5c6cb;
+  border-radius: 5px;
+  padding: 10px 15px;
+  margin-top: 10px;
+}
+.section-header-with-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 30px 0 10px;
+}
+
+.view-all-items-button {
+  background-color: #3c3c3c;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.view-all-items-button:hover {
+  background-color: #161717;
+}
+.stock-levels-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.view-all-items-button {
+  background-color: #2a2a2a;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.view-all-items-button:hover {
+  background-color: #000000;
+}
+
+/* Dropdown toggle button */
+.dropdown-toggle {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  font-size: 16px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown-toggle:hover {
+  background-color: #0056b3;
+}
+
+/* Export button */
+.export-button {
+  background-color: #28a745;
+  color: white;
+  padding: 10px 16px;
+  margin: 16px 0;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.export-button:hover {
+  background-color: #218838;
+}
+
+/* Optional: Animated collapse/expand for sections */
+.section-content {
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+/* Collapsible section titles */
+.collapsible-title {
+  font-size: 18px;
+  font-weight: 600;
+  padding: 12px 16px;
+  margin: 8px 0;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover effect */
+.collapsible-title:hover {
+  color: #000000;
+}
+
+/* Optional: Arrow indicator for open/close state */
+.collapsible-title::after {
+  content: '▼';
+  float: right;
+  font-size: 14px;
+  transition: transform 0.3s ease;
+}
+
+/* Rotate the arrow when the section is expanded */
+.collapsible-title.open::after {
+  transform: rotate(-180deg);
+}
+
+
+
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .dynamic-stats-container {
+    flex-direction: column;
+  }
+
+  .dynamic-stat-card {
+    width: 100%;
+  }
+
+  .table-container {
+    overflow-x: auto;
+  }
+}

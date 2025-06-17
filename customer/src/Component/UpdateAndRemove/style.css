@@ -1,0 +1,70 @@
+/* Container for each cart item */
+.cart-item-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid #e0e0e0;
+  background-color: #fff;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+/* Quantity buttons and number */
+.quantity-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Increment and decrement buttons */
+.quantity-wrapper button {
+  padding: 6px 12px;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: #302e2e;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.quantity-wrapper button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.quantity-wrapper button:hover:not(:disabled) {
+  background-color: #ddd;
+}
+
+/* Quantity number display */
+.quantity-wrapper .quantity-display {
+  font-size: 16px;
+  min-width: 30px;
+  text-align: center;
+  color: #333;
+}
+
+/* Remove button styles */
+.remove-button {
+  background-color: #302e2e;
+  border: none;
+  color: white;
+  padding: 6px 14px;
+  font-size: 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.remove-button:hover {
+  background-color: #000000;
+}
+
+/* Optional: Error text styling */
+.error-text {
+  color: rgb(0, 0, 0);
+  font-size: 12px;
+  margin-top: 4px;
+}

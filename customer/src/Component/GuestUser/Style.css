@@ -1,0 +1,68 @@
+/* Style.css */
+
+.guest-user-form {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #f9f9fb;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.guest-user-form h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 24px;
+}
+
+.guest-user-form form {
+  display: flex;
+  flex-direction: column;
+}
+
+.guest-user-form input {
+  padding: 12px 14px;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: #fff;
+  transition: border 0.2s ease-in-out;
+}
+
+.guest-user-form input:focus {
+  border-color: #000000;
+  outline: none;
+  box-shadow: 0 0 3px rgba(29, 29, 29, 0.3);
+}
+
+.guest-user-form button {
+  padding: 12px;
+  background-color: #000000;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.guest-user-form button:hover:not(:disabled) {
+  background-color: #000000;
+}
+
+.guest-user-form button:disabled {
+  background-color: #a9a9a9;
+  cursor: not-allowed;
+}
+
+.guest-user-form .error {
+  color: #d8000c;
+  background-color: #ffd2d2;
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  margin-top: 12px;
+  font-size: 14px;
+}

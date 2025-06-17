@@ -1,0 +1,222 @@
+/* Header layout */
+.main-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30px 20px;
+  border-bottom: 2px solid #000000; /* underline */
+  background: none; /* no background */
+  position: relative;
+}
+.nav-icon {
+  font-size: 20px;
+  color: #333;
+  margin: 0 10px;
+  transition: color 0.2s ease-in-out;
+}
+
+.nav-icon:hover {
+  color: #484848;
+  font-size: 20px;
+}
+
+
+/* Hamburger on the left */
+.hamburger {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.hamburger div {
+  width: 25px;
+  height: 3px;
+  background-color: #333;
+}
+
+/* Centered logo and title */
+.logo-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo {
+  width: 50px;
+}
+
+/* Nav items on the right */
+.nav-links {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+/* Sidebar styles */
+.side-menu {
+  position: fixed;
+  top: 0;
+  left: -250px;
+  width: 250px;
+  height: 100%;
+  background-color: #ffffff;
+  box-shadow: 2px 0 5px rgba(3, 3, 3, 0.3);
+  padding: 20px;
+  transition: left 0.3s ease-in-out;
+  z-index: 999;
+}
+
+.side-menu.open {
+  left: 0;
+}
+
+.close-btn {
+  font-size: 24px;
+  background: none;
+  border: none;
+  color: #000000;
+  cursor: pointer;
+  float: right;
+}
+
+.side-menu-categories {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 40px;
+}
+
+.side-menu-categories li {
+  padding: 10px 0;
+  cursor: pointer;
+  border-bottom: 1px solid #dddcdc;
+  font-weight: 500;
+}
+
+.side-menu-categories li:hover {
+  color: #000000;
+  font-size: 20px;
+}
+
+
+
+
+/* Base styles already provided above remain the same */
+
+@media (max-width: 1024px) {
+  .main-header {
+    padding: 20px 15px;
+  }
+
+  .logo {
+    width: 40px;
+  }
+
+  .logo-title h1 {
+    font-size: 18px;
+  }
+
+  .nav-icon {
+    font-size: 18px;
+    margin: 0 5px;
+  }
+
+  .nav-links {
+    gap: 10px;
+  }
+
+  .side-menu {
+    width: 220px;
+    padding: 15px;
+  }
+
+  .side-menu-categories li {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 10px;
+  }
+
+  .logo-title {
+    position: static;
+    transform: none;
+    gap: 8px;
+  }
+
+  .logo-title h1 {
+    font-size: 16px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 120px;
+  }
+
+  .hamburger {
+    order: -1;
+    gap: 3px;
+  }
+
+  .hamburger div {
+    width: 22px;
+    height: 2.5px;
+  }
+
+  .nav-links {
+    gap: 5px;
+  }
+
+  .nav-icon {
+    font-size: 16px;
+  }
+
+  .side-menu {
+    width: 200px;
+    padding: 15px;
+  }
+
+  .side-menu-categories li {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-header {
+    padding: 10px;
+  }
+
+  .logo {
+    width: 35px;
+  }
+
+  .logo-title h1 {
+    font-size: 14px;
+    max-width: 100px;
+  }
+
+  .nav-icon {
+    font-size: 14px;
+  }
+
+  .side-menu {
+    width: 180px;
+  }
+
+  .side-menu-categories li {
+    font-size: 14px;
+  }
+}

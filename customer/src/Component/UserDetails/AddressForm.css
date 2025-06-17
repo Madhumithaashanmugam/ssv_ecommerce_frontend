@@ -1,0 +1,65 @@
+.address-form-container {
+  background-color: white;
+  color: #3c3c3c;
+  padding: 32px;
+  max-width: 500px;
+  margin: 40px auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.address-form-container h2 {
+  text-align: center;
+  margin-bottom: 24px;
+  font-size: 24px;
+  font-weight: 600;
+  color: #4d4d4d;
+}
+
+.address-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.address-form input {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: white;
+  color: #3c3c3c;
+  font-size: 15px;
+  transition: border-color 0.2s ease;
+}
+
+.address-form input::placeholder {
+  color: #888;
+}
+
+.address-form input:focus {
+  border-color: #4d4d4d;
+  outline: none;
+}
+
+.address-form button {
+  background-color: #4d4d4d;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.address-form button:hover {
+  background-color: #3c3c3c;
+  transform: translateY(-1px);
+}
+
+.address-form button:disabled {
+  background-color: #999;
+  cursor: not-allowed;
+}

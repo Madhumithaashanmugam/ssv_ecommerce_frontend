@@ -1,0 +1,102 @@
+/* Base styles already defined — keeping as-is */
+.intro-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+.intro-text-overlay {
+  max-width: 800px;
+  padding: 30px 25px;
+  border-radius: 12px;
+  text-align: center;
+  line-height: 1.8;
+  font-size: 16px;
+  color: #333;
+}
+
+.intro-heading {
+  font-size: 22px;
+  color: #222;
+  display: block;
+  margin-bottom: 15px;
+}
+
+.whatsapp-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border: 2px solid black;
+  border-radius: 6px;
+  color: black;
+  text-decoration: none;
+  font-weight: 500;
+  margin-top: 2vh;
+  transition: all 0.3s ease;
+  background-color: white;
+}
+
+.whatsapp-link:hover {
+  background-color: black;
+  color: white;
+}
+
+.whatsapp-icon {
+  font-size: 20px;
+}
+
+/* 🔽 Responsive styles for tablets and phones */
+@media (max-width: 768px) {
+  .intro-section {
+    padding: 30px 15px;
+  }
+
+  .intro-text-overlay {
+    padding: 20px 15px;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .intro-heading {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  .whatsapp-link {
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+
+  .whatsapp-icon {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .intro-section {
+    padding: 20px 10px;
+  }
+
+  .intro-text-overlay {
+    padding: 16px 12px;
+    font-size: 14px;
+  }
+
+  .intro-heading {
+    font-size: 18px;
+  }
+
+  .whatsapp-link {
+    font-size: 13.5px;
+    flex-direction: column;
+    gap: 4px;
+    padding: 8px 10px;
+    text-align: center;
+  }
+
+  .whatsapp-icon {
+    font-size: 17px;
+  }
+}

@@ -1,0 +1,337 @@
+/* PendingOrder.css */
+
+.pending-orders-container {
+  padding: 2rem;
+  background-color: #f8f9fa;
+  min-height: 100vh;
+}
+
+.pending-orders-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 7vh;
+  color: #2c3e50;
+}
+
+.no-orders-message {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #999;
+}
+
+.orders-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.order-card {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 1.5rem;
+  width: 350px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.order-items {
+  margin-top: 1rem;
+}
+
+.order-item {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+  align-items: center;
+}
+
+.item-image {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.order-actions {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.accept-button,
+.decline-button {
+  padding: 0.5rem 1rem;
+  border: none;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 100%;
+  transition: 0.3s;
+}
+
+.accept-button {
+  background-color: #28a745;
+  color: white;
+}
+
+.accept-button:hover {
+  background-color: #218838;
+}
+
+.decline-button {
+  background-color: #dc3545;
+  color: white;
+}
+
+.decline-button:hover {
+  background-color: #c82333;
+}
+
+
+.search-filters {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.search-filters select,
+.search-filters input {
+  padding: 6px;
+  font-size: 14px;
+}
+
+.order-date-heading {
+  font-size: 1.5rem;
+  margin: 30px 0 10px;
+  color: #333;
+}
+
+/* Container for the heading and search controls */
+.header-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+/* Heading on the left */
+.pending-orders-title {
+  font-size: 2rem;
+  color: #333;
+  margin: 0;
+}
+
+/* Search filters on the right */
+.search-filters {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* Select and Input styling */
+.search-filters select,
+.search-filters input {
+  padding: 6px 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Grouped date heading */
+.order-date-heading {
+  font-size: 1.5rem;
+  margin: 30px 0 10px;
+  color: #333;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 5px;
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* dim background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  width: 120%;
+  max-width: 500px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  position: relative;
+  animation: fadeIn 0.3s ease;
+}
+
+.modal h3 {
+  margin-top: 0;
+  margin-bottom: 16px;
+  font-size: 1.5rem;
+  color: #000000;
+}
+
+.modal img {
+  display: block;
+  margin: 0 auto 16px;
+  max-width: 150%;
+  border-radius: 8px;
+}
+
+.modal p {
+  margin: 6px 0;
+  font-size: 14px;
+  color: #333;
+}
+
+.modal button {
+  margin-top: 20px;
+  padding: 10px 18px;
+  background-color: #000000;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.modal button:hover {
+  background-color: #000000;
+}
+
+/* Close button in top-right */
+.modal-close-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: transparent;
+  border: none;
+  font-size: 22px;
+  color: #999;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.modal-close-btn:hover {
+  color: #333;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 16px;
+}
+/* Responsive Styles for Mobile and Tablet Screens */
+@media (max-width: 768px) {
+  .pending-orders-container {
+    padding: 1rem;
+  }
+
+  .orders-list {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .order-card {
+    width: 100%;
+    padding: 1rem;
+  }
+
+  .header-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .pending-orders-title {
+    font-size: 1.5rem;
+    text-align: left;
+  }
+
+  .search-filters {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .search-filters select,
+  .search-filters input {
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  .modal {
+    width: 90%;
+    padding: 16px;
+  }
+
+  .modal img {
+    max-width: 100%;
+  }
+
+  .modal h3 {
+    font-size: 1.2rem;
+  }
+
+  .modal p {
+    font-size: 13px;
+  }
+
+  .modal-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .accept-button,
+  .decline-button {
+    font-size: 14px;
+    padding: 0.6rem;
+  }
+}
+@media (max-width: 768px) {
+  /* Responsive styling for dropdowns */
+  .search-filters select {
+    appearance: none;
+    width: 20%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D'10'%20height%3D'7'%20viewBox%3D'0%200%2010%207'%20xmlns%3D'http%3A//www.w3.org/2000/svg'%3E%3Cpath%20d%3D'M0%200l5%207%205-7H0z'%20fill%3D'%23999'%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 10px;
+  }
+
+  .search-filters select:focus {
+    outline: none;
+    border-color: #666;
+  }
+}

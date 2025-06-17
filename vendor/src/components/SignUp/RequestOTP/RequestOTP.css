@@ -1,0 +1,59 @@
+/* RequestOtpPage.css */
+
+.request-otp-container {
+  width: 320px;
+  margin: 100px auto;
+  padding: 30px 25px;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.request-otp-container h2 {
+  color: #3c3c3c;
+  margin-bottom: 20px;
+}
+
+.request-otp-input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 16px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+.request-otp-button {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  background-color: #4d4d4d;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.request-otp-button:hover {
+  background-color: #3c3c3c;
+}
+
+.success-message {
+  margin-top: 12px;
+  color: green;
+}
+
+.error-message {
+  margin-top: 12px;
+  color: red;
+}
+.info-message {
+  color: #2e7d32;
+  margin-top: 10px;
+  font-weight: 500;
+}
