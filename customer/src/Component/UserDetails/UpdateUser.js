@@ -16,7 +16,6 @@ function UpdateUser() {
   });
 
   useEffect(() => {
-    console.log("UserInfo:", userInfo);
     if (userInfo) {
       setFormData({
         name: userInfo.name || '',

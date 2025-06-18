@@ -3,36 +3,30 @@ import axios from 'axios';
 export const registerUser = async (data) => {
   try {
     // Log the request data for debugging purposes
-    console.log("Sending registration data:", data);
     
     // Register the user and capture the response
     const response = await axios.post('http://127.0.0.1:8000/api/customer/auth/otp/auth/register', data);
 
     // Log the entire response to verify it
-    console.log("Registration response:", response);
 
     // Extract the token and user data from the response
     const { access_token, user } = response.data;
     
     // Check if the access_token exists
     if (access_token) {
-      console.log("Access token received:", access_token);
       
       // Store the token in localStorage (or sessionStorage if preferred)
       localStorage.setItem('access_token', access_token);
       
       // Log the stored token for verification
-      console.log("Access token stored:", localStorage.getItem('access_token'));
       
       // Log user data for debugging
-      console.log("User data:", user);
       
       // Alert user of successful registration
       alert('Registration successful!');
       
     } else {
       // Log the response if no token is received
-      console.log("No token received in response.");
       alert('Registration failed. No token received.');
     }
     

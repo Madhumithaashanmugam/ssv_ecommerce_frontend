@@ -24,7 +24,6 @@ const PendingOrders = () => {
 const fetchItemDetails = async (itemId) => {
   try {
     const response = await api.get(`http://localhost:8000/items/${itemId}`);
-    console.log("Item details:", response.data);
     
     if (response.data) {
       setSelectedItemDetails(response.data);
@@ -133,7 +132,6 @@ const confirmDecline = async () => {
       reason: declineReason,
     });
 
-    console.log(`Order ${selectedOrderId} declined with reason: ${declineReason}`);
     await fetchPendingOrders(); // ✅ Keep this
   } catch (error) {
     console.error(`Error declining order ${selectedOrderId}:`, error);
@@ -149,7 +147,6 @@ const confirmAccept = async () => {
     await api.put(`http://localhost:8000/orders/${selectedAcceptOrderId}/status`, {
       order_status: 'Accepted',
     });
-    console.log(`Order ${selectedAcceptOrderId} accepted`);
      window.location.reload(); // Force refresh
     fetchPendingOrders();
   } catch (error) {

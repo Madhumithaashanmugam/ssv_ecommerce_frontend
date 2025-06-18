@@ -29,54 +29,58 @@ const ListOrders = () => {
     applyFilters();
   }, [orders, filterByBalance, searchTerm, filterType]);
 
-  const fetchOrders = async () => {
-    try {
-      const response = await api.get('offline-order/');
-      const ordersData = response.data;
-      setOrders(ordersData);
+const fetchOrders = async () => {
+  try {
+    const response = await api.get('offline-order/');
+    const ordersData = response.data.filter(order => !order.is_returned);
 
-      const uniqueItemIds = [
-        ...new Set(ordersData.flatMap(order => order.items.map(item => item.item_id)))
-      ];
+    setOrders(ordersData);
+    // ...
 
-      const itemDetailsMap = {};
-      await Promise.all(
-        uniqueItemIds.map(async (id) => {
-          try {
-            const res = await api.get(`items/${id}`);
-            itemDetailsMap[id] = res.data;
-          } catch (err) {
-            console.error(`Error fetching item ${id}:`, err);
-          }
-        })
-      );
-      setItemDetails(itemDetailsMap);
-    } catch (error) {
-      console.error('Error fetching orders:', error);
+
+    const uniqueItemIds = [
+      ...new Set(ordersData.flatMap(order => order.items.map(item => item.item_id)))
+    ];
+
+    const itemDetailsMap = {};
+    await Promise.all(
+      uniqueItemIds.map(async (id) => {
+        try {
+          const res = await api.get(`items/${id}`);
+          itemDetailsMap[id] = res.data;
+        } catch (err) {
+          console.error(`Error fetching item ${id}:`, err);
+        }
+      })
+    );
+    setItemDetails(itemDetailsMap);
+  } catch (error) {
+    console.error('Error fetching orders:', error);
+  }
+};
+
+const applyFilters = () => {
+let filtered = orders.filter(order => !order.is_returned);
+
+  if (filterByBalance === 'due') {
+    // Use Math.floor to ignore decimal fractions like 0.0008
+     filtered = filtered.filter(order => order.balance_due >= 1);
+  }
+
+  const value = searchTerm.toLowerCase();
+  filtered = filtered.filter(order => {
+    if (filterType === 'name') return order.customer_name?.toLowerCase().includes(value);
+    if (filterType === 'phone') return order.customer_phone?.includes(value);
+    if (filterType === 'date') {
+      const date = new Date(order.order_date).toLocaleDateString();
+      return date.includes(value);
     }
-  };
+    return true;
+  });
 
-  const applyFilters = () => {
-    let filtered = [...orders];
-
-    if (filterByBalance === 'due') {
-      filtered = filtered.filter(order => order.balance_due > 0);
-    }
-
-    const value = searchTerm.toLowerCase();
-    filtered = filtered.filter(order => {
-      if (filterType === 'name') return order.customer_name?.toLowerCase().includes(value);
-      if (filterType === 'phone') return order.customer_phone?.includes(value);
-      if (filterType === 'date') {
-        const date = new Date(order.order_date).toLocaleDateString();
-        return date.includes(value);
-      }
-      return true;
-    });
-
-    filtered.sort((a, b) => new Date(b.order_date) - new Date(a.order_date));
-    setFilteredOrders(filtered);
-  };
+  filtered.sort((a, b) => new Date(b.order_date) - new Date(a.order_date));
+  setFilteredOrders(filtered);
+};
 
   const groupOrdersByDate = (ordersList) => {
     return ordersList.reduce((acc, order) => {
@@ -167,12 +171,16 @@ const ListOrders = () => {
                     <p><strong>Order Date:</strong> {new Date(order.order_date).toLocaleString()}</p>
                     <p><strong>Delivery Date:</strong> {order.delivery_date}</p>
                     <p><strong>Payment Status:</strong> {order.payment_status} ({order.payment_method})</p>
-                    <p><strong>Total:</strong> ₹{order.total_amount}</p>
+                    <p><strong>Total:</strong> ₹{Math.floor(order.total_amount).toLocaleString('en-IN')}</p>
                     <p><strong>Discount:</strong> ₹{order.discount}</p>
-                    <p><strong>Amount Paid:</strong> ₹{order.amount_paid}</p>
-                    <p style={{ color: order.balance_due > 0 ? 'red' : 'green', fontWeight: 'bold' }}>
-                      <strong>Balance Due:</strong> ₹{order.balance_due}
+                    <p style={{ color: Math.floor(order.amount_paid) >= Math.floor(order.total_amount) ? 'green' : 'black' }}>
+                      <strong>Amount Paid:</strong> ₹{Math.floor(order.amount_paid)}
                     </p>
+                    {Math.floor(order.amount_paid) < Math.floor(order.total_amount) && (
+                      <p style={{ color: 'red', fontWeight: 'bold' }}>
+                        <strong>Balance Due:</strong> ₹{Math.floor(order.balance_due)}
+                      </p>
+                    )}
                     <p><strong>Notes:</strong> {order.notes}</p>
                     <p><strong>Returned:</strong> {order.is_returned ? '✅ Yes' : '❌ No'}</p>
 

@@ -20,10 +20,8 @@ const PastOrders = () => {
           guest_user_id: userInfo.guest_user_id || null,
         };
 
-        console.log('📦 Fetching past orders with payload:', payload);
 
         const response = await axios.post('http://localhost:8000/by-user-or-guest', payload);
-        console.log('✅ Orders fetched:', response.data);
         setOrders(response.data || []);
       } catch (err) {
         console.error('❌ Failed to fetch orders:', err);

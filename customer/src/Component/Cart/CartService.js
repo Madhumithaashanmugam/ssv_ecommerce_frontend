@@ -34,7 +34,6 @@ export const fetchCartByIdentifier = async (customerId, guestCartId) => {
       return null;
     }
 
-    console.log("Fetching cart with URL:", url); // Debug log
     const response = await axios.get(url);
     return response.data;
   } catch (error) {

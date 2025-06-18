@@ -9,12 +9,10 @@ const CategoryPage = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    console.log('CategoryPage mounted with ID:', id); // ✅ Debug log
 
     const loadItems = async () => {
       try {
         const data = await fetchItemsWithCategories();
-        console.log('Fetched categories:', data); // ✅ Debug log
         const category = data.find((cat) => String(cat.category_id) === String(id));
 
         if (category) {

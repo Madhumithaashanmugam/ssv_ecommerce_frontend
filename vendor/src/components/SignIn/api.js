@@ -9,7 +9,6 @@ function logTokenExpiry(token) {
   try {
     const payload = JSON.parse(atob(token.split('.')[1]));
     const expiryDate = new Date(payload.exp * 1000);
-    console.log("🔐 Token Expires At:", expiryDate.toLocaleString());
   } catch (e) {
     console.warn("⚠️ Unable to decode token:", e);
   }
@@ -17,10 +16,10 @@ function logTokenExpiry(token) {
 
 // Request Interceptor: Attach Token
 api.interceptors.request.use((config) => {
-  const token = localStorage.getItem('token');
+  const token = localStorage.getItem('vendor_jwt');  
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
-    logTokenExpiry(token); // Optional: comment this out in production
+    logTokenExpiry(token);
   }
   return config;
 }, (error) => {

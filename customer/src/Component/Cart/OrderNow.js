@@ -130,7 +130,6 @@ const OrderNowButton = ({ userInfo, cart }) => {
         state: orderAddress.state
       };
 
-      console.log('📦 Sending order payload:', JSON.stringify(orderData, null, 2));
       await createOrder(orderData);
       await deleteCart();
       setShowPopup(false);

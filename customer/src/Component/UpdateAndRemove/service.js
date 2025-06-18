@@ -21,7 +21,6 @@ export const removeCartItem = async ({ cart_id, item_id, customer_id, guest_user
       guest_user_id,
     };
 
-    console.log("Sending DELETE to /cart/cart/remove", bodyPayload);
 
     const response = await fetch('http://127.0.0.1:8000/cart/cart/remove', {
       method: 'DELETE',
@@ -35,7 +34,6 @@ export const removeCartItem = async ({ cart_id, item_id, customer_id, guest_user
       throw new Error(data.message || 'Failed to remove cart item');
     }
 
-    console.log("Removed successfully. Updated cart:", data);
     return data;
   } catch (error) {
     console.error("Fetch failed:", error);

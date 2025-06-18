@@ -40,7 +40,6 @@ const VendorSignupPage = () => {
       };
 
       const response = await axios.post('http://localhost:8000/api/vendor/users/register', payload);
-      console.log('Registration success:', response.data);
 
       setSuccess('Registration successful. You can now log in.');
       setError('');

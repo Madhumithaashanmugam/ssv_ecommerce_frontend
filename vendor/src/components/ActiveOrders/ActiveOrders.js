@@ -74,7 +74,6 @@ const confirmCompleteOrder = async () => {
     });
 
     if (response.status === 200) {
-      console.log('Order marked as Completed');
       fetchActiveOrders();
     }
      window.location.reload();

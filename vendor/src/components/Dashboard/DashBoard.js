@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import { FaUserCircle } from 'react-icons/fa';
 import api from '../SignIn/api';
 
-
 const Dashboard = () => {
   const navigate = useNavigate();
 
@@ -14,28 +13,32 @@ const Dashboard = () => {
     completed: 0,
     declined: 0,
     returned: 0,
+    offline: 0, // ✅ Added offline count
   });
 
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const [onlineRes, offlineRes] = await Promise.all([
+        const [onlineRes, offlineReturnedRes, offlineAllRes] = await Promise.all([
           api.get('http://localhost:8000/orders/'),
           api.get('http://localhost:8000/offline-order/orders/returned'),
+          api.get('http://localhost:8000/offline-order/'),
         ]);
 
         const onlineOrders = Array.isArray(onlineRes.data)
           ? onlineRes.data
           : onlineRes.data.orders || [];
 
-        const offlineOrders = offlineRes.data?.returned_orders || [];
+        const offlineReturnedOrders = offlineReturnedRes.data?.returned_orders || [];
+        const offlineOrders = offlineAllRes.data?.orders || [];
 
         const statusCount = {
           pending: onlineOrders.filter(order => order.order_status === 'Pending').length,
           accepted: onlineOrders.filter(order => order.order_status === 'Accepted').length,
           completed: onlineOrders.filter(order => order.order_status === 'Completed').length,
           declined: onlineOrders.filter(order => order.order_status === 'Declined').length,
-          returned: onlineOrders.filter(order => order.order_status === 'Returned').length + offlineOrders.length,
+          returned: onlineOrders.filter(order => order.order_status === 'Returned').length + offlineReturnedOrders.length,
+          offline: offlineOrders.length,
         };
 
         setOrderCounts(statusCount);
@@ -103,10 +106,10 @@ const Dashboard = () => {
 
         <div className="card" onClick={() => navigate('/orders/list')}>
           <h2>Offline Orders</h2>
-          <p></p>
+          <p>{orderCounts.offline}</p>
         </div>
 
-        <div className="card" onClick={() => navigate('orders/returned')}>
+        <div className="card" onClick={() => navigate('/orders/returned')}>
           <h2>Returned Orders</h2>
           <p>{orderCounts.returned}</p>
           <small style={{ fontSize: '0.75rem', color: '#666' }}>(Online + Offline)</small>

@@ -60,7 +60,6 @@ const ItemDetail = () => {
 
     try {
       const response = await createCart(cartPayload);
-      console.log('Cart updated:', response);
       setIsAdded(true);
       setTimeout(() => setIsAdded(false), 2000);
     } catch (error) {

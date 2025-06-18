@@ -14,9 +14,7 @@ const Analytics = () => {
   useEffect(() => {
     const fetchAnalytics = async () => {
       try {
-        console.log("📊 Fetching analytics using secured API...");
         const res = await api.get("/analytics/analytics"); // ✅ Uses the interceptor
-        console.log("✅ Analytics received:", res.data);
         setAnalyticsData(res.data.data);
       } catch (err) {
         console.error("❌ Error fetching analytics:", {
