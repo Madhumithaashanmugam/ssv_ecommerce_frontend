@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './DeclinedOrders.css';
+import { useNavigate } from 'react-router-dom';
+
 
 const DeclinedOrders = () => {
   const [orders, setOrders] = useState([]);
@@ -10,6 +12,8 @@ const DeclinedOrders = () => {
   const [fromDate, setFromDate] = useState('');
   const [toDate, setToDate] = useState('');
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
+
 
   const fetchUserInfo = async (userId, guestUserId) => {
     try {
@@ -93,6 +97,20 @@ const DeclinedOrders = () => {
 
   return (
     <div className="declined-orders-container">
+    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <button
+          onClick={() => navigate('/')}
+          style={{
+            padding: '6px 12px',
+            borderRadius: '6px',
+            border: '1px solid #ccc',
+            backgroundColor: '#f0f0f0',
+            cursor: 'pointer',
+          }}
+        >
+          ← Back to Dashboard
+        </button>
+      </div>
       <h2>Declined Orders</h2>
 
       <div className="search-bar">

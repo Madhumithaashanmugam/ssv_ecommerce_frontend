@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../DeclinedOrders/DeclinedOrders.css';
 import api from '../SignIn/api';
+import { useNavigate } from 'react-router-dom';
 
 const ReturnedOrders = () => {
   const [onlineOrders, setOnlineOrders] = useState([]);
@@ -9,6 +10,7 @@ const ReturnedOrders = () => {
   const [filterType, setFilterType] = useState('name');
   const [orderType, setOrderType] = useState('all'); // new filter
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   const fetchUserInfo = async (userId, guestUserId) => {
     try {
@@ -103,6 +105,20 @@ const ReturnedOrders = () => {
 
   return (
     <div className="declined-orders-container">
+    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <button
+          onClick={() => navigate('/')}
+          style={{
+            padding: '6px 12px',
+            borderRadius: '6px',
+            border: '1px solid #ccc',
+            backgroundColor: '#f0f0f0',
+            cursor: 'pointer',
+          }}
+        >
+          ← Back to Dashboard
+        </button>
+      </div>
       <h2>Returned Orders</h2>
 
       <div className="search-bar">

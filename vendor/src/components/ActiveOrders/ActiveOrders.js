@@ -1,6 +1,8 @@
 import React, { useEffect, useState, useRef } from 'react';
 import './ActiveOrder.css';
 import api from '../SignIn/api';
+import { useNavigate } from 'react-router-dom';
+
 
 const ActiveOrders = () => {
   const [activeOrders, setActiveOrders] = useState([]);
@@ -11,6 +13,7 @@ const ActiveOrders = () => {
   const userCache = useRef({});
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [selectedOrderId, setSelectedOrderId] = useState(null);
+  const navigate = useNavigate();
 
 
   const fetchUserInfo = async (userId, guestUserId) => {
@@ -108,6 +111,20 @@ const confirmCompleteOrder = async () => {
 
   return (
     <div className="active-orders-container">
+    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <button
+          onClick={() => navigate('/')}
+          style={{
+            padding: '6px 12px',
+            borderRadius: '6px',
+            border: '1px solid #ccc',
+            backgroundColor: '#f0f0f0',
+            cursor: 'pointer',
+          }}
+        >
+          ← Back to Dashboard
+        </button>
+      </div>
       <h1>Active Orders</h1>
 
       <div className="search-filters">

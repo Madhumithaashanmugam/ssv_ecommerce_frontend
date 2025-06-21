@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import api from '../SignIn/api';
 import './ListOrders.css';
+import { useNavigate } from 'react-router-dom';
+
 
 const ListOrders = () => {
   const [orders, setOrders] = useState([]);
@@ -20,6 +22,7 @@ const ListOrders = () => {
   });
 
   const [showReturnConfirm, setShowReturnConfirm] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchOrders();
@@ -135,6 +138,20 @@ let filtered = orders.filter(order => !order.is_returned);
 
   return (
     <div className="list-orders-container">
+    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <button
+          onClick={() => navigate('/')}
+          style={{
+            padding: '6px 12px',
+            borderRadius: '6px',
+            border: '1px solid #ccc',
+            backgroundColor: '#f0f0f0',
+            cursor: 'pointer',
+          }}
+        >
+          ← Back to Dashboard
+        </button>
+      </div>
       <h2>List of Orders</h2>
 
       <div className="filters">

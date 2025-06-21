@@ -26,8 +26,8 @@ function SignUp() {
     }));
 
     if (name === 'hashed_password') {
-      const pattern = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
-      setIsValidPassword(pattern.test(value));
+      // ✅ Only check password length between 8 and 12
+      setIsValidPassword(value.length >= 8 && value.length <= 12);
     }
   };
 
@@ -45,7 +45,7 @@ function SignUp() {
       await registerUser(dataToSend);
       navigate('/');
     } catch (error) {
-      // handle silently
+      // Optional: Show error message here if needed
     }
   };
 
@@ -92,7 +92,7 @@ function SignUp() {
           </p>
           {!isValidPassword && (
             <p style={{ color: "red", fontSize: "13px", marginBottom: "10px" }}>
-              Password must be at least 8 characters, include 1 capital letter and 1 number.
+              Password must be between 8 and 12 characters.
             </p>
           )}
           <button type="submit" className="signup-button" disabled={!isValidPassword}>

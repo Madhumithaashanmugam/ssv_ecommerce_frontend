@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import * as XLSX from 'xlsx';
 import api from '../SignIn/api';
 import './CompletedOrder.css';
+import { useNavigate } from 'react-router-dom';
+
 
 const CompletedOrders = () => {
   const [orders, setOrders] = useState([]);
@@ -13,6 +15,8 @@ const CompletedOrders = () => {
   const [toDate, setToDate] = useState('');
   const [showModal, setShowModal] = useState(false);
   const [orderToReturn, setOrderToReturn] = useState(null);
+  const navigate = useNavigate();
+
 
   const fetchUserInfo = async (userId, guestUserId) => {
     try {
@@ -129,6 +133,20 @@ const CompletedOrders = () => {
 
   return (
     <div className="completed-orders-container">
+    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <button
+          onClick={() => navigate('/')}
+          style={{
+            padding: '6px 12px',
+            borderRadius: '6px',
+            border: '1px solid #ccc',
+            backgroundColor: '#f0f0f0',
+            cursor: 'pointer',
+          }}
+        >
+          ← Back to Dashboard
+        </button>
+      </div>
       <h2>Completed Orders</h2>
 
       <div className="search-filters">

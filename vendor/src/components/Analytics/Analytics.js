@@ -104,6 +104,20 @@ const Analytics = () => {
 
   return (
     <div className="analytics-container">
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <button
+          onClick={() => navigate('/')}
+          style={{
+            padding: '6px 12px',
+            borderRadius: '6px',
+            border: '1px solid #ccc',
+            backgroundColor: '#f0f0f0',
+            cursor: 'pointer',
+          }}
+        >
+          ← Back to Dashboard
+        </button>
+      </div>
       <h1 className="analytics-title">Analytics Dashboard</h1>
       <button onClick={exportToExcel} className="export-button">Export to Excel</button>
 

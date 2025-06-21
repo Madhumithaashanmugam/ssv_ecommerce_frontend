@@ -67,6 +67,20 @@ const AddCategory = () => {
 
   return (
     <div className="add-category-container">
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <button
+          onClick={() => navigate('/')}
+          style={{
+            padding: '6px 12px',
+            borderRadius: '6px',
+            border: '1px solid #ccc',
+            backgroundColor: '#f0f0f0',
+            cursor: 'pointer',
+          }}
+        >
+          ← Back to Dashboard
+        </button>
+      </div>
       <div className="header">
         <h1>Add New Category</h1>
         {message && <p className="success-message">{message}</p>}

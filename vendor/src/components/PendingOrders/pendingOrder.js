@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import api from '../SignIn/api';
 import './PendingOrder.css';
+import { useNavigate } from 'react-router-dom';
 
 const PendingOrders = () => {
   const [pendingOrders, setPendingOrders] = useState([]);
@@ -19,6 +20,7 @@ const PendingOrders = () => {
   const [selectedAcceptOrderId, setSelectedAcceptOrderId] = useState(null);
 
 
+  const navigate = useNavigate();
 
 
 const fetchItemDetails = async (itemId) => {
@@ -184,8 +186,22 @@ const groupedOrders = filteredOrders.reduce((groups, order) => {
   }, {});
 
 return (
-  <div className="pending-orders-container">
-    <h1 className="pending-orders-title">Pending Orders</h1>
+   <div className="pending-orders-container">
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <button
+          onClick={() => navigate('/')}
+          style={{
+            padding: '6px 12px',
+            borderRadius: '6px',
+            border: '1px solid #ccc',
+            backgroundColor: '#f0f0f0',
+            cursor: 'pointer',
+          }}
+        >
+          ← Back to Dashboard
+        </button>
+      </div>
+              <h1 className="pending-orders-title">Pending Orders</h1>
 
     <div className="search-filters">
       <select

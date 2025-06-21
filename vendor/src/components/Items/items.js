@@ -2,12 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { createItem, getItems } from './service';
 import './items.css';
+import { useNavigate } from 'react-router-dom';
+
 
 const AddItem = () => {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const categoryIdFromURL = queryParams.get('categoryId');
-
+  const navigate = useNavigate();
   const [itemName, setItemName] = useState('');
   const [itemPrice, setItemPrice] = useState('');
   const [finalPrice, setFinalPrice] = useState('');
@@ -34,12 +36,13 @@ const AddItem = () => {
     const original = parseFloat(itemPrice);
     const final = parseFloat(finalPrice);
     if (!isNaN(original) && !isNaN(final) && original > 0 && final > 0 && final <= original) {
-      const calculatedDiscount = Math.round(((original - final) / original) * 100);
-      setDiscount(calculatedDiscount);
+      const calculatedDiscount = ((original - final) / original) * 100;
+      setDiscount(Number(calculatedDiscount.toFixed(2)));
     } else {
       setDiscount(0);
     }
   }, [itemPrice, finalPrice]);
+
 
   const fetchItems = async () => {
     try {
@@ -119,6 +122,20 @@ const AddItem = () => {
 
   return (
     <div className="add-item-container">
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <button
+          onClick={() => navigate('/')}
+          style={{
+            padding: '6px 12px',
+            borderRadius: '6px',
+            border: '1px solid #ccc',
+            backgroundColor: '#f0f0f0',
+            cursor: 'pointer',
+          }}
+        >
+          ← Back to Dashboard
+        </button>
+      </div>
       <h2>Add New Item</h2>
       {message && <p className="success-message">{message}</p>}
       {error && <p className="error-message">{error}</p>}

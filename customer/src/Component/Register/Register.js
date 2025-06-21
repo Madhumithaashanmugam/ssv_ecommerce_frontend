@@ -7,22 +7,34 @@ import AuthLayout from '../../HomePage/AuthLayout';
 function Register() {
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false); // 🔁 Prevent double click
+  const [errorMessage, setErrorMessage] = useState(''); // 🔴 For UI error
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setErrorMessage('');
+
     if (email.trim() !== '') {
       setLoading(true);
       try {
         await sendOtp({ email }); // ✅ Send as JSON body
         navigate('/register/verify-otp', { state: { email } }); // ✅ Pass email forward
       } catch (error) {
-        // Error handling silently
+        console.error('Send OTP failed:', error); // For debugging
+
+        // ✅ Show error in UI
+        if (error.response && error.response.data && error.response.data.detail) {
+          setErrorMessage(error.response.data.detail);
+        } else if (error.message) {
+          setErrorMessage(error.message);
+        } else {
+          setErrorMessage('Failed to send OTP. Please try again.');
+        }
       } finally {
-        setLoading(false); // 🔄 Re-enable button
+        setLoading(false);
       }
     } else {
-      // No alert or log for empty email
+      setErrorMessage('Please enter your email.');
     }
   };
 
@@ -47,6 +59,9 @@ function Register() {
             {loading ? 'Sending...' : 'Send OTP'}
           </button>
         </form>
+
+        {/* ✅ Show error message if present */}
+        {errorMessage && <div className="register-error">{errorMessage}</div>}
       </div>
     </AuthLayout>
   );

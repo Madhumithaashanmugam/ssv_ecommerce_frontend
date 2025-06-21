@@ -8,19 +8,20 @@ const SignIn = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState(''); // 👈 Error message state
   const { setAuthData } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const isValidPassword = (password) => {
-    const pattern = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
-    return pattern.test(password);
+    return password.length >= 8 && password.length <= 12;
   };
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    setError('');
 
     if (!isValidPassword(password)) {
-      alert("Password must be at least 8 characters, contain 1 capital letter and 1 number.");
+      setError("Password must be between 8 and 12 characters.");
       return;
     }
 
@@ -29,7 +30,7 @@ const SignIn = () => {
       setAuthData(data.access_token, data.user);
       navigate('/');
     } catch (err) {
-      alert('Invalid credentials!');
+      setError("Invalid credentials!");
       console.error('Login failed:', err);
     }
   };
@@ -54,19 +55,26 @@ const SignIn = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        {/* Toggle visibility below input */}
+        {/* Show/Hide Password */}
         <p
           style={{
             fontSize: "14px",
             color: "#000",
             cursor: "pointer",
-            marginBottom: "15px",
+            marginBottom: "10px",
             marginTop: "-10px"
           }}
           onClick={() => setShowPassword(!showPassword)}
         >
           {showPassword ? "Hide Password" : "Show Password"}
         </p>
+
+        {/* Error message below password */}
+        {error && (
+          <p style={{ color: 'red', fontSize: '13px', marginBottom: '10px' }}>
+            {error}
+          </p>
+        )}
 
         <button type="submit">Login</button>
       </form>

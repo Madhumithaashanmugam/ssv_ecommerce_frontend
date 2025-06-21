@@ -84,7 +84,10 @@ export const updateAddress = async (addressId, data) => {
 
 
 export const updateUserDetails = async (userId, userData) => {
-  const res = await axios.put(`http://127.0.0.1:8000/api/customer/users/${userId}`, userData);
+  const res = await axios.put(
+    `http://127.0.0.1:8000/api/customer/users/customer/users/user/${userId}`,
+    userData
+  );
   return res.data;
 };
 

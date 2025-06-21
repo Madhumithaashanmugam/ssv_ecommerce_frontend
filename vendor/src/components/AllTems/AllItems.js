@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import "./AllItems.css";
 import api from "../SignIn/api";
 import UpdateItemModal from "./UpdateItem";
+import { useNavigate } from 'react-router-dom';
+
 
 const AllItems = () => {
   const [items, setItems] = useState([]);
@@ -12,6 +14,7 @@ const AllItems = () => {
 
   const [showDeletePopup, setShowDeletePopup] = useState(false);
   const [itemToDelete, setItemToDelete] = useState(null);
+  const navigate = useNavigate();
 
   const fetchItems = async () => {
     try {
@@ -69,6 +72,20 @@ const AllItems = () => {
 
   return (
     <div className="items-container">
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <button
+          onClick={() => navigate('/')}
+          style={{
+            padding: '6px 12px',
+            borderRadius: '6px',
+            border: '1px solid #ccc',
+            backgroundColor: '#f0f0f0',
+            cursor: 'pointer',
+          }}
+        >
+          ← Back to Dashboard
+        </button>
+      </div>
       <h2>All Items</h2>
       <div className="items-list">
         {items.map((item) => (

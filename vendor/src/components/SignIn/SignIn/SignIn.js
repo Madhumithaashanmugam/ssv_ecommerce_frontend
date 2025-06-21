@@ -13,8 +13,7 @@ const VendorSigninPage = () => {
   const navigate = useNavigate();
 
   const isPasswordValid = (password) => {
-    const pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
-    return pattern.test(password);
+    return password.length >= 8 && password.length <= 12;
   };
 
   const handleSignin = async () => {
@@ -88,8 +87,9 @@ const VendorSigninPage = () => {
         </div>
 
         <p style={{ fontSize: '12px', color: isPasswordValid(password) ? 'green' : 'red' }}>
-          Must be at least 8 characters, include 1 uppercase, 1 lowercase, and 1 number.
+          Password must be 8 to 12 characters long.
         </p>
+
 
         <div className="signin-links">
           <Link to="/forgot-password" className="signin-link">
